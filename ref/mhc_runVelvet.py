@@ -33,7 +33,7 @@ class Setup(Target):
     """Sets up velvet runs for all samples
     """
     def __init__(self, options):
-        Target.__init__(self, time=0.00025, memory=1000000, cpu=1)
+        Target.__init__(self, time=0.00025)
         self.options = options
 
     def run(self):
@@ -69,7 +69,7 @@ class RunSample(Target):
     """
     """
     def __init__(self, experiment, dir, options):
-        Target.__init__(self, time=0.0025)
+        Target.__init__(self, time=500)
         self.exp = experiment
         self.dir = dir
         self.options = options
@@ -132,7 +132,7 @@ class RunVelvetg(Target):
     """
     """
     def __init__(self, dir, paramStr):
-        Target.__init__(self, time=0.25)
+        Target.__init__(self, time=35000)
         self.dir = dir
 	self.paramStr = paramStr
 	
@@ -186,6 +186,7 @@ class RepeatMask(Target):
     """repeatMask the assembled contigs
     """
     def __init__(self, dir):
+        Target.__init__(self, time=3600)
         self.dir = dir
 
     def run(self):

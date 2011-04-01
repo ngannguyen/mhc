@@ -27,10 +27,11 @@ def removeNs(files, outdir):
     for file in files:
         outfile = "%s/%s" %(outdir, file)
         f = open(outfile, "w")
-        
+        fin = open(file, "r")
+ 
         seq = ""
         name = ""
-	for line in f.readlines():
+	for line in fin.readlines():
 	    if re.match(">", line):
 	        if seq != "":
 		    writeNewSeqs(seq, f, name)
@@ -43,6 +44,7 @@ def removeNs(files, outdir):
 	if seq != "":
 	    writeNewSeqs(seq, f, name)
 	f.close()
+        fin.close()
 
 def getList(file):
     f = open(file, "r")
@@ -58,7 +60,7 @@ def main():
     parser.add_option("-o", "--outdir", dest="outdir", help="Output directory", default="outputs")
     parser.add_option("-s", "--sequences", dest="seqList", help="File that contains list of interest species. Specify this option if do not want to list the species in the arguments", default='')
     (options, args) = parser.parse_args()
-    if options.speciesList == '':
+    if options.seqList == '':
         removeNs(args, options.outdir)
     else:
         files = getList(options.seqList)
