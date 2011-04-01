@@ -4,9 +4,10 @@ binPath = ../bin
 
 cflags += ${tokyoCabinetIncl} -lssl
 
-progs = $(notdir $(wildcard cactus_writeRunCactusMakefile.py cactus_mafToReferenceSeq.py cactus_writeExperimentXml.py eval_mafMapCoor.py eval_bedMapCoor.py eval_MAFToBed.py eval_MAFFilter.py mhc_mafExtract.py mhc_mafToGenomeSeqs.py mhc_writeRepeatMaskingMakefiles.py))
+progs = $(notdir $(wildcard cactus_writeRunCactusMakefile.py cactus_mafToReferenceSeq.py cactus_writeExperimentXml.py eval_mafMapCoor.py eval_bedMapCoor.py eval_MAFToBed.py eval_MAFFilter.py mhc_mafExtract.py mhc_mafToGenomeSeqs.py mhc_writeRepeatMaskingMakefiles.py mhc_writeAssemblyMakefile.py mhc_removeNs.py))
 
-modules = pSLs
+#modules = pSLs
+modules = 
 .PHONY: %.all
 
 targets = ${progs:%=${binPath}/%} ${modules:%=%.all}
