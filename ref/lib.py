@@ -23,7 +23,7 @@ def parseLogLine(line):
     #Example line: "Final graph has 64919 nodes and n50 of 2463, max 20992, total 4525301, using 3929018/4169836 reads"
     items = re.split("\D+", line)
     
-    assert len(items) != 9
+    #assert len(items) == 9
     
     stats["nodes"] = items[1]
     stats["n50"] = items[3]
