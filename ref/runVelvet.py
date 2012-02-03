@@ -251,7 +251,7 @@ class CleanupSample(Target):
         
         if self.mask:
             logger.info("repeatMasking the assembled contigs...\n")
-            self.addChildTarget(RepeatMask(self.dir, "contig.fa"))
+            self.addChildTarget(RepeatMask(self.dir, "contigs.fa"))
             self.addChildTarget(RepeatMask(self.dir, "haplotype.fa"))
             self.addChildTarget(RepeatMask(self.dir, "haplotype.fa.alt"))
 
