@@ -4,7 +4,7 @@ binPath = ../bin
 
 cflags += ${tokyoCabinetIncl} -lssl
 
-progs = $(notdir $(wildcard mhc_runVelvet.py))
+progs = $(notdir $(wildcard runVelvet.py mhc_runVelvet.py))
 
 #modules = pSLs
 modules = 

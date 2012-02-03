@@ -45,7 +45,6 @@ class Setup(Target):
         
 	#self.setFollowOnTarget(Cleanup())
 
-
 class RunExperiment(Target):
     """Add children jobs (each child = one sample) for the experiment
     """
@@ -228,8 +227,9 @@ def main():
     Stack.addJobTreeOptions(parser)
 
     parser.add_option("-e", "--experimentList",dest= "experimentList", help= "File containing list of experiments (sample sets). E.g: \naml\ngbm\n")
-    parser.add_option("-d", "--dataDir",dest= "dataDir", help= "Location of the reads. E.g: /inside/depot/aml/wg")
+    parser.add_option("-d", "--dataDir",dest= "dataDir", help= "Location of the reads. E.g: /inside/grotto/nknguyen/mhcRef/data")
     parser.add_option("-r", "--ref",dest= "ref", help= "Fasta file of the reference sequence")
+    #parser.add_option("-r", "--ref",dest= "ref", help= "Fasta file of the reference sequence. /inside/depot/users/nknguyen/mhc/data")
     parser.add_option("-k", "--kmer",dest= "kmer", help= "kmer for velvet", default="25")
     parser.add_option("-o", "--output", dest="outdir", help="Output directory")
     parser.add_option("-c", "--continue", dest="cont", action="store_true", help="If specified, skip the velveth step, continue running velvetg", default=False)
