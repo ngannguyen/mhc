@@ -251,8 +251,9 @@ class CleanupSample(Target):
         
         if self.mask:
             logger.info("repeatMasking the assembled contigs...\n")
-            self.addChildTarget(RepeatMask(self.dir))
-
+            self.addChildTarget(RepeatMask(self.dir, "contig.fa"))
+            self.addChildTarget(RepeatMask(self.dir, "haplotype.fa"))
+            self.addChildTarget(RepeatMask(self.dir, "haplotype.fa.alt"))
 
 class RunVelvetg(Target):
     """
@@ -332,14 +333,15 @@ class RunVelvetg(Target):
 class RepeatMask(Target):
     """repeatMask the assembled contigs
     """
-    def __init__(self, dir):
+    def __init__(self, dir, filename):
         Target.__init__(self, time=3600)
         self.dir = dir
+        self.filename = filename
 
     def run(self):
         localTempDir = self.getLocalTempDir()
-        contigFile = os.path.join(self.dir, "contigs.fa")
-        localContigFile = os.path.join(localTempDir, "contigs.fa")
+        contigFile = os.path.join(self.dir, self.filename)
+        localContigFile = os.path.join(localTempDir, self.filename)
         repeatMaskDir = os.path.join(localTempDir, "repeatMask")
         system("mkdir -p %s" %(repeatMaskDir))
 
@@ -349,7 +351,7 @@ class RepeatMask(Target):
 	#Copy to output dir
 	outdir = os.path.join(self.dir, "repeatMask")
 	system("mkdir -p %s" %outdir)
-	system("mv %s/* %s" %(repeatMaskDir, outdir))
+	system("mv %s/*.masked %s" %(repeatMaskDir, outdir))
         #system("")
 
 class Sample():
