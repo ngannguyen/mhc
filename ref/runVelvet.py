@@ -180,7 +180,7 @@ class RunSample(Target):
 	velvetInputFiles = ""
 	reffile = ''
 	for file in readFiles:
-	    fileitems = file.split('\t')
+	    fileitems = file.split()
 	    #if len(fileitems) < 2:
 	    #    raise RuntimeError("Wrong file.lst format. Require: <filename>\t<ref>")
 	    if len(fileitems) == 2:
