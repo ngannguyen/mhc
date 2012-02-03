@@ -418,10 +418,13 @@ def checkOptions(parser, options, args):
     if options.experimentList == None and options.inputInfo == None:
         parser.error("Neither experiment list nor preprocess was given\n")
     
-    if not options.ref or not os.path.exists(options.ref):
+    if options.inputInfo and not os.path.exists(options.ref):
         parser.error("Reference-Info File was not specified or does not exist (%s)\n" %(options.ref))
-    else:
+    elif options.ref:
         options.ref2info = readRef(options.ref)
+    else:
+        options.ref2info = {}
+    
 
 def main():
     parser = OptionParser()
